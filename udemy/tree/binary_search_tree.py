@@ -1,3 +1,5 @@
+# オブジェクトでデータを持つ
+# 二分探索木とは、すべてのノードが特定の並び順になっている二分木のことです。
 class Node(object):
     def __init__(self, value: int) -> None:
         self.value = value
