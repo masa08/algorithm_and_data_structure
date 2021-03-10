@@ -6,20 +6,34 @@ class ListNode:
         self.next = next
 
 
+# class Solution:
+#     def deleteDuplicates(self, head: ListNode) -> ListNode:
+#         if head == None:
+#             return head
+
+#         current = head.next
+#         prev = head
+
+#         while current:
+#             if current.val == prev.val:
+#                 prev.next = current.next
+#                 current = current.next
+#             else:
+#                 current = current.next
+#                 prev = prev.next
+
+#         return head
+
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
         if head == None:
             return head
 
-        current = head.next
-        prev = head
+        current = head
 
-        while current:
-            if current.val == prev.val:
-                prev.next = current.next
-                current = current.next
+        while head and head.next:
+            if head.val == head.next.val:
+                head.next = head.next.next
             else:
-                current = current.next
-                prev = prev.next
-
-        return head
+                head = head.next
+        return current
