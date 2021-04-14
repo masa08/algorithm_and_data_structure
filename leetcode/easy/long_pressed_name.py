@@ -1,13 +1,17 @@
-# TODO: 理解する
+# TWO Pointer
+# 配列操作の場合に、効率よく要素同士を比較したりして、パフォーマンス向上のために用いられるアルゴリズム
 class Solution:
     def isLongPressedName(self, name: str, typed: str) -> bool:
-        j = 0
-        i = 0
+        pointerOne = 0
+        pointerTwo = 0
 
-        while j < len(typed):
-            if i < len(name) and name[i] == typed[j]:
-                i += 1
-            elif j == 0 or typed[j] != typed[j-1]:
+        while pointerOne < len(typed):
+            if pointerTwo < len(name) and name[pointerTwo] == typed[pointerOne]:
+                pointerTwo += 1
+            # 最初の文字で一致しなかった場合はFalse
+            # 文字が続いた場合、その文字は前と同じ文字であることが条件
+            elif pointerOne == 0 or typed[pointerOne] != typed[pointerOne-1]:
                 return False
-            j += 1
-        return i == len(name)
+            pointerOne += 1
+
+        return pointerTwo == len(name)
