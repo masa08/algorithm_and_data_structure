@@ -1,3 +1,5 @@
+# TODO: 以下の解法を理解する
+# https://leetcode.com/problems/search-in-rotated-sorted-array/discuss/14437/Python-binary-search-solution-O(logn)-48ms
 from typing import List
 
 
