@@ -30,3 +30,32 @@ class Solution:
             else:
                 left += 1
         return -1
+
+    def search2(self, nums, target):
+        if not nums:
+            return -1
+
+        low, high = 0, len(nums) - 1
+
+        while low <= high:
+            mid = (low + high) // 2
+            if target == nums[mid]:
+                return mid
+
+            if nums[low] <= nums[mid]:
+                # lowからmidまでは昇順であることの保証
+                # targetが範囲内にあることを保証する
+                if nums[low] <= target <= nums[mid]:
+                    high = mid - 1
+                else:
+                    low = mid + 1
+            # nums[low] > nums[mid]
+            else:
+                # targetが範囲内にあることを保証する
+                # midからhighまでが昇順であることの保証
+                if nums[mid] <= target <= nums[high]:
+                    low = mid + 1
+                else:
+                    high = mid - 1
+
+        return -1
