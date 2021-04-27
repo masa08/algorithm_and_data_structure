@@ -9,6 +9,7 @@ class Solution:
             trusted[b] += 1
 
         for i in range(1, N+1):
+            # trustedのvalueが人数分を満たしていたら
             if trusted[i] == N-1:
                 return i
         return -1
