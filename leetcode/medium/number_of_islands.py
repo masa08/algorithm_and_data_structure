@@ -3,10 +3,10 @@ from typing import List
 
 
 class Solution:
-    def numIslands(self, grid: List[List[str]]) -> int:
+    def numIslandsBfs(self, grid: List[List[str]]) -> int:
         height, width, count = len(grid), len(grid[0]), 0
 
-        def search(x, y):
+        def bfs_search(x, y):
             p, temp, grid[x][y] = [[x, y]], [], 0
             while p:
                 for i, j in p:
@@ -19,6 +19,21 @@ class Solution:
 
         for i, j in itertools.product(range(height), range(width)):
             if grid[i][j] == "1":
-                search(i, j)
+                bfs_search(i, j)
+                count += 1
+        return count
+
+    def numIslandsDfs(self, grid: List[List[str]]) -> int:
+        height, width, count = len(grid), len(grid[0]), 0
+
+        def dfs_search(x, y):
+            grid[x][y] = "0"
+            for i, j in [[x-1, y], [x, y+1], [x+1, y], [x, y-1]]:
+                if not (i in [-1, height] or j in [-1, width] or grid[i][j] == "0"):
+                    dfs_search(i, j)
+
+        for i, j in itertools.product(range(height), range(width)):
+            if grid[i][j] == "1":
+                dfs_search(i, j)
                 count += 1
         return count
