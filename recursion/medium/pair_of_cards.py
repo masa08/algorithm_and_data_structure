@@ -42,13 +42,12 @@ def winnerPairOfCards(player1, player2):
             if r > maxr2:
                 high_card2 = card
                 maxr2 = r
-
-        rank1 = high_card1
-        rank2 = high_card2
-        if rank[rank1] > rank[rank2]:
+        # ランクを比較
+        if rank[high_card1] > rank[high_card2]:
             return "player1"
-        elif rank[rank1] < rank[rank2]:
+        elif rank[high_card1] < rank[high_card2]:
             return "player2"
+        # ランクが同じ場合は対象カードをremove
         else:
             player1 = [p for p in player1 if p[1:] != high_card1[0]]
             player2 = [p for p in player2 if p[1:] != high_card2[0]]
