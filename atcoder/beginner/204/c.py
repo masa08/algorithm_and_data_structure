@@ -25,5 +25,4 @@ def main():
         ans += sum(tmp)
     return ans
 
-
 print(main())
