@@ -1,23 +1,30 @@
-# TODO: 理解中
+# https://www.mrrhp.com/ja/understandable-knapsack#_4
+# https://nashidos.hatenablog.com/entry/2020/05/09/071907
 def main():
     # 入力値格納
     N, W = map(int, input().split())
-    w = []
-    v = []
+    weight = []
+    value = []
     for _ in range(N):
         wt, vt = map(int, input().split())
-        w.append(wt)
-        v.append(vt)
+        weight.append(wt)
+        value.append(vt)
 
     # dpテーブル定義
     dp = [[0]*(W + 1) for _ in range(N+1)]
 
+    # Nとweightとvalueは同じ長さで連動している
+    # N = 3, W = 8
+    # weight = [3, 4, 5]
+    # value = [30, 50, 60]
     for i in range(N):
-        for j in range(W+1):
-            if j < w[i]:  # 選ばない時
-                dp[i+1][j] = dp[i][j]
-            else:  # 選ぶ時
-                dp[i+1][j] = max(dp[i][j], dp[i][j-w[i]]+v[i])
+        for w in range(W+1):
+            if w < weight[i]:  # 選ばない
+                dp[i+1][w] = dp[i][w]
+            else:  # 選ぶ
+                dp[i+1][w] = max(dp[i][w], dp[i][w-weight[i]]+value[i])
+        print(dp)
+
     return dp[N][W]
 
 
