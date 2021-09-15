@@ -1,5 +1,6 @@
 ## algorithm_and_data_structure
 
+### 概要
 アルゴリズムとデータ構造関連の学習の記録。
 
 ### 背景
