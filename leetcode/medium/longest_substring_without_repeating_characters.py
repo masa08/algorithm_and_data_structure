@@ -1,4 +1,3 @@
-# TODO: 理解する
 # https://dev.classmethod.jp/articles/longest-substring-without-repeating-characters/
 # https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/742926/Simple-Explanation-or-Concise-or-Thinking-Process-and-Example
 class Solution:
@@ -15,3 +14,19 @@ class Solution:
             seen[s[right]] = right
             right += 1
         return longest
+
+
+class SolutionTwo:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = set()
+        l = 0
+        res = 0
+
+        for r in range(len(s)):
+            while s[r] in seen:
+                seen.remove(s[l])
+                l += 1
+            seen.add(s[r])
+            res = max(res, r-l+1)
+
+        return res
