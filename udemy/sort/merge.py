@@ -11,8 +11,10 @@ def merge_sort(numbers: List[int]) -> List[int]:
   merge_sort(right)
 
   i = j = k = 0
+
+  # k = i + jとなる
   while i < len(left) and j < len(right):
-    if left[i] < right[j]:
+    if left[i] <= right[j]:
       numbers[k] = left[i]
       i += 1
     else:
@@ -20,6 +22,7 @@ def merge_sort(numbers: List[int]) -> List[int]:
       j += 1
     k += 1
 
+  # 考慮されなかった余った部分に対する処理
   while i < len(left):
     numbers[k] = left[i]
     i += 1
