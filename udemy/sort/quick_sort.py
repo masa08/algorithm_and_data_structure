@@ -9,8 +9,10 @@ def partition(numbers: List[int], low: int, high: int) -> int:
         if numbers[j] <= pivot:
             i = i + 1
             numbers[i], numbers[j] = numbers[j], numbers[i]
+    # loopを抜けたらpivotとpartition_indexの位置を入れ替える
     # i+1以下はnumbers[high]よりも小さく、i+1以上はnumbers[high]より大きい
     numbers[i+1], numbers[high] = numbers[high], numbers[i+1]
+    # pivotを基準に、大小関係が整理されている基準となるindex
     return i+1
 
 
