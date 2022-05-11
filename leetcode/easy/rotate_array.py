@@ -1,3 +1,9 @@
+from typing import List
+
+# 1. 配列の要素をreverseする
+# 2. 0からk-1までの配列の要素をreverseする
+# 3. kからlen(nums)-1までの配列の要素をreverseする
+# => 求める配列が出力される
 class Solution:
   def reverse(self, nums: List[int], l: int, r: int) -> None:
     while l <= r:
