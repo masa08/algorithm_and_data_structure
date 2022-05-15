@@ -19,14 +19,14 @@ class Solution:
 class SolutionTwo:
     def lengthOfLongestSubstring(self, s: str) -> int:
         seen = set()
-        l = 0
-        res = 0
+        l, res = 0, 0
 
-        for r in range(len(s)):
-            while s[r] in seen:
+        for i in range(len(s)):
+            # iがseenから無くなるまで、remove
+            while s[i] in seen:
                 seen.remove(s[l])
+                # removeした分、lを進める
                 l += 1
-            seen.add(s[r])
-            res = max(res, r-l+1)
-
+            seen.add(s[i])
+            res = max(res, i-l+1)
         return res
