@@ -9,11 +9,9 @@ class TreeNode:
 # recursiveな解き方
 class Solution:
     def mergeTrees(self, root1: TreeNode, root2: TreeNode) -> TreeNode:
-        if root1 and root2:
-            merget_root = TreeNode(root1.val + root2.val)
-            merget_root.left = self.mergeTrees(root1.left, root2.left)
-            merget_root.right = self.mergeTrees(root1.right, root2.right)
+        if not root1 or not root2: return root1 or root2
 
-            return merget_root
-        else:
-            return root1 or root2
+        merge_root = TreeNode(root1.val + root2.val)
+        merge_root.left = self.mergeTrees(root1.left, root2.left)
+        merge_root.right = self.mergeTrees(root1.right, root2.right)
+        return merge_root
