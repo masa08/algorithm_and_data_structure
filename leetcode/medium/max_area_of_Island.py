@@ -6,51 +6,44 @@ from typing import List
 
 class SolutionDFS:
     def maxAreaOfIsland(self, G: List[List[int]]) -> int:
-        # 縦の長さ、横の長さを取得, mを初期化
-        M, N, m = len(G), len(G[0]), 0
+        M, N, maxArea = len(G), len(G[0]), 0
 
         def dfs_area(x, y):
-            if (x, y) in V:
-                return
-            G[x][y], _ = 0, V.add((x, y))
-            # 周辺のマスを探索
+            G[x][y] = 0
+            V.add((x, y))
             for i, j in [[x-1, y], [x, y+1], [x+1, y], [x, y-1]]:
-                # 0の場合とislandをはみ出した場合と0でない場合は処理しない
+                # islandをはみ出した場合、0でない場合は処理しない
                 if not (i in [-1, M] or j in [-1, N] or G[i][j] == 0):
                     dfs_area(i, j)
 
-        # マスのすべての組み合わせを取得して繰り返し処理
         for i, j in itertools.product(range(M), range(N)):
-            # G[i][j]が1であれば処理
-            if G[i][j]:
+            if G[i][j] == 1:
                 V = set()
                 dfs_area(i, j)
-                m = max(m, len(V))
-        return m
+                maxArea = max(maxArea, len(V))
+        return maxArea
 
 
 class SolutionBFS:
     def maxAreaOfIsland(self, G: List[List[int]]) -> int:
-        # 縦の長さ、横の長さを取得, mを初期化
-        M, N, m = len(G), len(G[0]), 0
+        M, N, maxArea = len(G), len(G[0]), 0
 
-        def area(x, y):
-            # p = point, t = target, a = answer的なニュアンス
-            p, t, a, G[x][y] = [[x, y]], [], 1, 0
-            while p:
-                for i, j in p:
-                    # 周辺のマスを探索
+        def bfs_area(x, y):
+            queue, target, ans, G[x][y] = [[x, y]], [], 1, 0
+            while queue:
+                for i, j in queue:
                     for k, l in [[i-1, j], [i, j+1], [i+1, j], [i, j-1]]:
-                        # 0の場合とislandをはみ出した場合は次へ
+                        # islandをはみ出した場合と、0の場合はcontinue
                         if k in [-1, M] or l in [-1, N] or G[k][l] == 0:
                             continue
                         # 次回探索候補tをpに代入、次回探索に影響ないようにtを初期化
-                        a, G[k][l], _ = a + 1, 0, t.append([k, l])
-                p, t = t, []
-            return a
-        # マスのすべての組み合わせを取得して繰り返し処理
+                        ans += 1
+                        G[k][l] = 0
+                        target.append([k, l])
+                queue, target = target, []
+            return ans
+
         for i, j in itertools.product(range(M), range(N)):
-            # G[i][j]が1であれば処理
-            if G[i][j]:
-                m = max(m, area(i, j))
-        return m
+            if G[i][j] == 1:
+                maxArea = max(maxArea, bfs_area(i, j))
+        return maxArea
