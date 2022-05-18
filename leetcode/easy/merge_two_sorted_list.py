@@ -7,7 +7,7 @@ class ListNode:
 
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-        dummy = temp = ListNode(0)
+        result = temp = ListNode(0)
 
         while l1 is not None and l2 is not None:
             if l1.val < l2.val:
@@ -19,4 +19,4 @@ class Solution:
             temp = temp.next
 
         temp.next = l1 or l2
-        return dummy.next
+        return result.next
