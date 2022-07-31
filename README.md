@@ -13,6 +13,9 @@
 - ソフトウェアエンジニアとして最低限必要な CS 関連の素養を身につけること
 - 社会人大学院入学(検討中)にあたり、最低限必要な基礎知識を身につけること
 
-### ロードマップ
+### 取り組んでいること
 
-https://github.com/masa08/algorithm_and_data_structure/issues/1
+- Recursion(https://recursionist.io/users/masa08)
+- Leetcode(https://leetcode.com/masa08/)
+- Arizona State Univ program, MCS Path way(https://asuonline.asu.edu/online-degree-programs/graduate/computer-science-mcs/?_ga=2.166693310.1004059618.1659134735-1597827893.1654560840#pathway)
+- grokking-the-system-design-interview
