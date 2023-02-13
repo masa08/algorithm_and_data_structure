@@ -19,3 +19,9 @@
 - Leetcode(https://leetcode.com/masa08/)
 - Arizona State Univ program, MCS Path way(https://asuonline.asu.edu/online-degree-programs/graduate/computer-science-mcs/?_ga=2.166693310.1004059618.1659134735-1597827893.1654560840#pathway)
 - grokking-the-system-design-interview
+
+### 移行
+直近は以下のリポジトリに移行している
+- Leetcode => https://github.com/masa08/leetcode
+- GreatFrontend => https://github.com/masa08/greatfrontend
+
